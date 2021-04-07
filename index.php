@@ -1,26 +1,23 @@
 <?php
-    $host = 'localhost';
+    $host = '127.0.0.1';
     $db   = 'netland';
     $user = 'root';
     $pass = '';
+    $port = "3307";
     $charset = 'utf8mb4';
 
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
     $options = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
+        \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
+        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+        \PDO::ATTR_EMULATE_PREPARES   => false,
     ];
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset;port=$port";
     try {
-        $pdo = new PDO($dsn, $user, $pass, $options);
-        echo("Connected to: " . $db . " on " . $host . " version: " . phpversion());
-        echo("<br>");
+        $pdo = new \PDO($dsn, $user, $pass, $options);
     } catch (\PDOException $e) {
         throw new \PDOException($e->getMessage(), (int)$e->getCode());
     }
-
-
-    ?>
+?>
 
 <!DOCTYPE html>
 
@@ -29,16 +26,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title></title>
+    <title>up and running</title>
     </head>
 
 <body>
 
-    <header></header>
-
-    <main></main>
-    
-    <footer></footer>
 
 </body>
 
